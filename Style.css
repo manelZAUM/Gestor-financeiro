@@ -1,0 +1,48 @@
+:root {
+    --bg: #0b0b0b;
+    --card: #161616;
+    --text: #e0e0e0;
+    --primary: #007acc;
+    --success: #00c853;
+    --danger: #ff3d00;
+    --warning: #ffab00;
+    --border: #2d2d2d;
+}
+
+body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+header { background: #111; border-bottom: 1px solid var(--border); padding: 15px 0; margin-bottom: 20px; }
+h1 { color: var(--primary); text-align: center; font-size: 1.2rem; text-transform: uppercase; margin: 0; }
+
+.tab-navigation { display: flex; justify-content: center; gap: 8px; overflow-x: auto; padding: 10px 0; }
+.tab-btn { background: #1a1a1a; border: 1px solid var(--border); padding: 8px 16px; cursor: pointer; border-radius: 4px; color: #888; }
+.tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.card-container, .grid-resumo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+.card { background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+
+.border-blue { border-left: 4px solid var(--primary); }
+.border-red { border-left: 4px solid var(--danger); }
+.border-green { border-left: 4px solid var(--success); }
+
+.valor { font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
+.positivo { color: var(--success); }
+.negativo { color: var(--danger); }
+.aviso-estoque { color: var(--warning) !important; font-weight: bold; }
+.aviso-texto { color: var(--warning); font-size: 0.85rem; line-height: 1.4; }
+
+.form-vertical { display: flex; flex-direction: column; gap: 10px; }
+input, select, .btn-main { background: #222; color: #fff; padding: 10px; border: 1px solid var(--border); border-radius: 4px; outline: none; }
+.btn-main { background: var(--primary); border: none; font-weight: bold; cursor: pointer; }
+.btn-green { background: var(--success); }
+.btn-red { background: var(--danger); }
+
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px; border-bottom: 1px solid #222; text-align: left; font-size: 0.85rem; }
+th { color: var(--primary); text-transform: uppercase; font-size: 0.75rem; }
+
+.mt-20 { margin-top: 20px; }
