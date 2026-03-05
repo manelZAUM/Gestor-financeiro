@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão - Fluxo Diário</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestão Financeira</h1>
+            <nav class="tab-navigation">
+                <a href="index.html" class="tab-btn">Dashboard</a>
+                <a href="lancamentos.html" class="tab-btn">Lançamentos</a>
+                <a href="estoque.html" class="tab-btn">Estoque</a>
+                <a href="capital.html" class="tab-btn">Capital de Giro</a>
+                <a href="mensal.html" class="tab-btn">Fluxo Mensal</a>
+                <a href="diario.html" class="tab-btn active">Fluxo Diário</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <div class="card" style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                <label>Mês:</label>
+                <select id="filtro-mes-diario" onchange="renderizarDiario()">
+                    <option value="01">Jan</option><option value="02">Fev</option><option value="03">Mar</option>
+                    <option value="04">Abr</option><option value="05">Mai</option><option value="06">Jun</option>
+                    <option value="07">Jul</option><option value="08">Ago</option><option value="09">Set</option>
+                    <option value="10">Out</option><option value="11">Nov</option><option value="12">Dez</option>
+                </select>
+                <label>Ano:</label>
+                <select id="filtro-ano-diario" onchange="renderizarDiario()"></select>
+                <button class="btn-main" onclick="exportarDiarioPDF()" style="margin-left: auto;">📄 Gerar PDF Diário</button>
+            </div>
+            <div class="card">
+                <table>
+                    <thead><tr><th>Data</th><th>Entradas</th><th>Saídas</th><th>Saldo</th></tr></thead>
+                    <tbody id="corpo-diario"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

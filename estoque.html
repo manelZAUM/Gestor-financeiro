@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão - Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestão Financeira</h1>
+            <nav class="tab-navigation">
+                <a href="index.html" class="tab-btn">Dashboard</a>
+                <a href="lancamentos.html" class="tab-btn">Lançamentos</a>
+                <a href="estoque.html" class="tab-btn active">Estoque</a>
+                <a href="capital.html" class="tab-btn">Capital de Giro</a>
+                <a href="mensal.html" class="tab-btn">Fluxo Mensal</a>
+                <a href="diario.html" class="tab-btn">Fluxo Diário</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <div class="card">
+                <div class="card border-green">
+                    <h3>📦 Cadastrar no Estoque</h3>
+                    <form id="form-cadastro-prod" class="form-vertical">
+                        <input type="text" id="c-prod-nome" placeholder="Nome" required>
+                        <input type="number" id="c-prod-qtd" placeholder="Qtd Inicial" required>
+                        <input type="number" id="c-prod-custo" placeholder="Custo" step="0.01" required>
+                        <input type="number" id="c-prod-venda" placeholder="Venda" step="0.01" required>
+                        <button type="submit" class="btn-main">Salvar Produto</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-20">
+                <table>
+                    <thead><tr><th>Tipo</th><th>Nome</th><th>Estoque</th><th>Ações (Reposição)</th></tr></thead>
+                    <tbody id="tabela-cadastros-corpo"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

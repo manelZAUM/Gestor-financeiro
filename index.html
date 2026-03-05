@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor Financeiro Pro - Dark</title>
+    <title>Gestão - Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-
     <header>
         <div class="container">
             <h1>Gestão Financeira</h1>
             <nav class="tab-navigation">
-                <button class="tab-btn active" onclick="abrirAba(event, 'aba-dashboard')">Dashboard</button>
-                <button class="tab-btn" onclick="abrirAba(event, 'aba-lancamentos')">Lançamentos</button>
-                <button class="tab-btn" onclick="abrirAba(event, 'aba-estoque')">Estoque</button>
-                <button class="tab-btn" onclick="abrirAba(event, 'aba-capital')">Capital de Giro</button>
-                <button class="tab-btn" onclick="abrirAba(event, 'aba-mensal')">Fluxo Mensal</button>
-                <button class="tab-btn" onclick="abrirAba(event, 'aba-diario')">Fluxo Diário</button>
+                <a href="index.html" class="tab-btn active">Dashboard</a>
+                <a href="lancamentos.html" class="tab-btn">Lançamentos</a>
+                <a href="estoque.html" class="tab-btn">Estoque</a>
+                <a href="capital.html" class="tab-btn">Capital de Giro</a>
+                <a href="mensal.html" class="tab-btn">Fluxo Mensal</a>
+                <a href="diario.html" class="tab-btn">Fluxo Diário</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <section id="aba-dashboard" class="tab-content active">
+        <section>
             <div class="card-container">
                 <div class="card border-blue">
                     <h3>Entradas</h3>
@@ -42,9 +41,23 @@
                     <small style="color: #888;">Líquido Total: <span id="saldo-liquido-full">R$ 0,00</span></small>
                 </div>
             </div>
+
+            <div class="card-container mt-20">
+                <div class="card border-blue">
+                    <h3>Ticket Médio</h3>
+                    <p id="ticket-medio" class="valor" style="color: #fff;">R$ 0,00</p>
+                    <small style="color: #888;">Média por venda/serviço</small>
+                </div>
+                <div class="card border-green">
+                    <h3>🏆 Produtos Mais Vendidos</h3>
+                    <ul id="lista-mais-vendidos" style="list-style: none; padding: 0; margin-top: 10px;"></ul>
+                </div>
+            </div>
+
             <div class="card mt-20">
                 <div style="height: 300px;"><canvas id="graficoEvolucao"></canvas></div>
             </div>
+            
             <div class="card mt-20 border-blue">
                 <h3>💾 Backup de Segurança</h3>
                 <p id="alerta-backup" class="aviso-texto"></p> 
@@ -55,125 +68,7 @@
                 </div>
             </div>
         </section>
-
-        <section id="aba-lancamentos" class="tab-content">
-            <div class="card-container">
-                <div class="card border-blue">
-                    <h3>🛠️ Lançar Serviço</h3>
-                    <form id="form-servico" class="form-vertical">
-                        <input type="text" id="serv-desc" placeholder="Descrição" required>
-                        <input type="number" id="serv-valor" placeholder="Valor" step="0.01" required>
-                        <input type="date" id="serv-data" required>
-                        <button type="submit" class="btn-main">Lançar</button>
-                    </form>
-                </div>
-                <div class="card border-green">
-                    <h3>📦 Lançar Venda</h3>
-                    <form id="form-produto-venda" class="form-vertical">
-                        <select id="sel-venda-prod" required><option value="">-- Produto --</option></select>
-                        <input type="date" id="prod-data" required>
-                        <button type="submit" class="btn-main btn-green">Vender</button>
-                    </form>
-                </div>
-                <div class="card border-red">
-                    <h3>💸 Lançar Saída</h3>
-                    <form id="form-saida-geral" class="form-vertical">
-                        <input type="text" id="sai-desc" placeholder="Descrição" required>
-                        <input type="number" id="sai-valor" placeholder="Valor" step="0.01" required>
-                        <input type="date" id="sai-data" required>
-                        <button type="submit" class="btn-main btn-red">Lançar</button>
-                    </form>
-                </div>
-            </div>
-            <div class="card mt-20">
-                <table>
-                    <thead><tr><th>Data</th><th>Descrição</th><th>Cat.</th><th>Valor</th><th>Ações</th></tr></thead>
-                    <tbody id="tabela-corpo"></tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="aba-estoque" class="tab-content">
-            <div class="card">
-                <div class="card border-green">
-                    <h3>📦 Cadastrar no Estoque</h3>
-                    <form id="form-cadastro-prod" class="form-vertical">
-                        <input type="text" id="c-prod-nome" placeholder="Nome" required>
-                        <input type="number" id="c-prod-qtd" placeholder="Qtd" required>
-                        <input type="number" id="c-prod-custo" placeholder="Custo" step="0.01" required>
-                        <input type="number" id="c-prod-venda" placeholder="Venda" step="0.01" required>
-                        <button type="submit" class="btn-main">Salvar</button>
-                    </form>
-                </div>
-            </div>
-            <div class="card mt-20">
-                <table>
-                    <thead><tr><th>Tipo</th><th>Nome</th><th>Estoque</th><th>Ações</th></tr></thead>
-                    <tbody id="tabela-cadastros-corpo"></tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="aba-capital" class="tab-content">
-            <div class="card-container">
-                <div class="card border-blue">
-                    <h3>💰 Reserva Acumulada</h3>
-                    <p id="total-capital-reserva" class="valor" style="color: #007acc;">R$ 0,00</p>
-                    <p style="font-size: 0.8rem; color: #888;">Fundo reservado para reinvestimentos.</p>
-                </div>
-                <div class="card border-green">
-                    <h3>➕ Movimentar Reserva</h3>
-                    <form id="form-capital" class="form-vertical">
-                        <input type="text" id="cap-desc" placeholder="Descrição (Ex: Lucro Jan)" required>
-                        <input type="number" id="valor-reserva" placeholder="Valor R$" step="0.01" required>
-                        <input type="date" id="cap-data" required>
-                        <div style="display: flex; gap: 5px;">
-                            <button type="submit" class="btn-main" style="flex: 1;">Adicionar</button>
-                            <button type="button" onclick="lancarRetiradaCapital()" class="btn-main btn-red" style="flex: 1;">Retirar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card mt-20">
-                <h3>Histórico do Fundo</h3>
-                <table>
-                    <thead><tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Ações</th></tr></thead>
-                    <tbody id="tabela-capital-corpo"></tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="aba-mensal" class="tab-content">
-            <div class="card" style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px;">
-                <label>Ano:</label>
-                <select id="filtro-ano-mensal" onchange="renderizarMensal()"></select>
-                <button class="btn-main" onclick="exportarMensalPDF()">📄 PDF Mensal</button>
-            </div>
-            <div id="lista-mensal" class="grid-resumo"></div>
-        </section>
-
-        <section id="aba-diario" class="tab-content">
-            <div class="card" style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
-                <label>Mês:</label>
-                <select id="filtro-mes-diario" onchange="renderizarDiario()">
-                    <option value="01">Jan</option><option value="02">Fev</option><option value="03">Mar</option>
-                    <option value="04">Abr</option><option value="05">Mai</option><option value="06">Jun</option>
-                    <option value="07">Jul</option><option value="08">Ago</option><option value="09">Set</option>
-                    <option value="10">Out</option><option value="11">Nov</option><option value="12">Dez</option>
-                </select>
-                <label>Ano:</label>
-                <select id="filtro-ano-diario" onchange="renderizarDiario()"></select>
-                <button class="btn-main" onclick="exportarDiarioPDF()" style="margin-left: auto;">📄 PDF Diário</button>
-            </div>
-            <div class="card">
-                <table>
-                    <thead><tr><th>Data</th><th>Entradas</th><th>Saídas</th><th>Saldo</th></tr></thead>
-                    <tbody id="corpo-diario"></tbody>
-                </table>
-            </div>
-        </section>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>

@@ -16,11 +16,9 @@ header { background: #111; border-bottom: 1px solid var(--border); padding: 15px
 h1 { color: var(--primary); text-align: center; font-size: 1.2rem; text-transform: uppercase; margin: 0; }
 
 .tab-navigation { display: flex; justify-content: center; gap: 8px; overflow-x: auto; padding: 10px 0; }
-.tab-btn { background: #1a1a1a; border: 1px solid var(--border); padding: 8px 16px; cursor: pointer; border-radius: 4px; color: #888; }
+.tab-btn { background: #1a1a1a; border: 1px solid var(--border); padding: 8px 16px; cursor: pointer; border-radius: 4px; color: #888; text-decoration: none; display: inline-block; font-size: 0.9rem;}
+.tab-btn:hover { background: #222; }
 .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-.tab-content { display: none; }
-.tab-content.active { display: block; }
 
 .card-container, .grid-resumo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
 .card { background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }

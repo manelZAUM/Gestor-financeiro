@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão - Capital de Giro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestão Financeira</h1>
+            <nav class="tab-navigation">
+                <a href="index.html" class="tab-btn">Dashboard</a>
+                <a href="lancamentos.html" class="tab-btn">Lançamentos</a>
+                <a href="estoque.html" class="tab-btn">Estoque</a>
+                <a href="capital.html" class="tab-btn active">Capital de Giro</a>
+                <a href="mensal.html" class="tab-btn">Fluxo Mensal</a>
+                <a href="diario.html" class="tab-btn">Fluxo Diário</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <div class="card-container">
+                <div class="card border-blue">
+                    <h3>💰 Reserva Acumulada</h3>
+                    <p id="total-capital-reserva" class="valor" style="color: #007acc;">R$ 0,00</p>
+                    <p style="font-size: 0.8rem; color: #888;">Fundo reservado para reinvestimentos.</p>
+                </div>
+                <div class="card border-green">
+                    <h3>➕ Movimentar Reserva</h3>
+                    <form id="form-capital" class="form-vertical">
+                        <input type="text" id="cap-desc" placeholder="Descrição (Ex: Lucro Jan)" required>
+                        <input type="number" id="valor-reserva" placeholder="Valor R$" step="0.01" required>
+                        <input type="date" id="cap-data" required>
+                        <div style="display: flex; gap: 5px;">
+                            <button type="submit" class="btn-main" style="flex: 1;">Adicionar</button>
+                            <button type="button" onclick="lancarRetiradaCapital()" class="btn-main btn-red" style="flex: 1;">Retirar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-20">
+                <h3>Histórico do Fundo</h3>
+                <table>
+                    <thead><tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Ações</th></tr></thead>
+                    <tbody id="tabela-capital-corpo"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
